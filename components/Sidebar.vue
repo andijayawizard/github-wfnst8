@@ -19,16 +19,16 @@
 			</NuxtLink>
 		</li>
 		<li class="py-2 hover:bg-indigo-300 rounded">
+			<NuxtLink to="/services">
+				<img src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/home.svg" class="w-7 sm:mx-2 mx-4 inline" />
+						<span class="hidden sm:inline">Services</span>
+			</NuxtLink>
+		</li>
+		<li class="py-2 hover:bg-indigo-300 rounded">
 			<NuxtLink to="/blog">
 				<img src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/home.svg" class="w-7 sm:mx-2 mx-4 inline" />
 						<span class="hidden sm:inline">Blog</span>
 			</NuxtLink>
-		</li>
-		<li class="py-2 hover:bg-indigo-300 rounded">
-				<a class="truncate" href="#">
-						<img src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/home.svg" class="w-7 sm:mx-2 mx-4 inline" />
-						<span class="hidden sm:inline">Home</span>
-				</a>
 		</li>
 		<li class="py-2 hover:bg-indigo-300 rounded">
 				<a class="truncate" href="#">
