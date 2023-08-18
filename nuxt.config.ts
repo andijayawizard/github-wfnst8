@@ -7,10 +7,15 @@ export default defineNuxtConfig({
       tailwindcss: {},
     },
   },
-  runTimeConfig: {
+  // publicRuntimeConfig: {
+  //   API_BASE_URL: process.env.API_BASE_URL || "https://fakestoreapi.com"
+  // },
+  runtimeConfig: {
     public: {
-      NUXT_API_URL: process.env.NUXT_API_URL,
-      NUXT_API_KEY: process.env.NUXT_API_KEY,
-    }
+      API_BASE_URL: process.env.API_BASE_URL,
+    },
+    private: {
+      API_KEY: process.env.API_KEY,
+    },
   }
 });
