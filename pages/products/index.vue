@@ -32,7 +32,7 @@ const page = ref(1);
 const params='/api/api.php/records/products?filter=pub,eq,1'
 
 const { data: list, error } = await useAsyncData(
-  'cafes',
+  'products',
   () => $fetch( `${params}`, {
     method: 'GET',
     baseURL: `${apiUrl}`,

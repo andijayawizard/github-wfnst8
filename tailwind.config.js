@@ -7,9 +7,11 @@ module.exports = {
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}',
     './app.vue',
+    "./node_modules/tw-elements/dist/js/**/*.js",
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("tw-elements/dist/plugin.cjs")],
+  darkMode: "class"
 };

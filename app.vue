@@ -7,8 +7,9 @@
             </div>
             <div class="bg-gray-50 rounded-xl border my-3 w-full">
                 <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between">
+                  welcome to
                     <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                        <span class="block text-indigo-600 overflow-ellipsis">Made with Tailwind CSS!</span>
+                        <span class="block text-indigo-600 overflow-ellipsis">BituNuxt</span>
                     </h2>
                 </div>
             </div>
@@ -20,3 +21,5 @@
     <Footer />
   </div>
 </template>
+<script setup>
+</script>

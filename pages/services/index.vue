@@ -24,9 +24,9 @@
   const config=useRuntimeConfig()
   const apiUrl=config.public.apiUrlBitu
   const params='/api/api.php/records/services?filter=pub,eq,1'
-  const {data: list, error, pending, refresh}=await useLazyFetch(`${apiUrl}${params}`, {
+  const {data: list, error, pending, refresh}=await useLazyAsyncData('services', ()=>$fetch(`${apiUrl}${params}`, {
     headers: {
       'x-api-key': config.public.apiKeyBitu
     }
-  })
+  }))
 </script>
