@@ -1,33 +1,11 @@
 <template>
+<div v-if="pending">loading...</div>
+<div v-else>
 	<ul class="flex sm:flex-col overflow-hidden content-center justify-between">
-		<li class="py-2 hover:bg-indigo-300 rounded">
-			<NuxtLink to="/">
+		<li v-for="item in list.records" :key="item.id" class="py-2 hover:bg-indigo-300 rounded">
+			<NuxtLink :to="`/${item.seo}`">
 				<img src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/home.svg" class="w-7 sm:mx-2 mx-4 inline" />
-						<span class="hidden sm:inline">Home</span>
-			</NuxtLink>
-		</li>
-		<li class="py-2 hover:bg-indigo-300 rounded">
-			<NuxtLink to="/about-us">
-				<img src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/home.svg" class="w-7 sm:mx-2 mx-4 inline" />
-						<span class="hidden sm:inline">About Us</span>
-			</NuxtLink>
-		</li>
-		<li class="py-2 hover:bg-indigo-300 rounded">
-			<NuxtLink to="/products">
-				<img src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/home.svg" class="w-7 sm:mx-2 mx-4 inline" />
-						<span class="hidden sm:inline">Products</span>
-			</NuxtLink>
-		</li>
-		<li class="py-2 hover:bg-indigo-300 rounded">
-			<NuxtLink to="/services">
-				<img src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/home.svg" class="w-7 sm:mx-2 mx-4 inline" />
-						<span class="hidden sm:inline">Services</span>
-			</NuxtLink>
-		</li>
-		<li class="py-2 hover:bg-indigo-300 rounded">
-			<NuxtLink to="/blog">
-				<img src="//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/home.svg" class="w-7 sm:mx-2 mx-4 inline" />
-						<span class="hidden sm:inline">Blog</span>
+				<span class="hidden sm:inline">{{item.caption}}</span>
 			</NuxtLink>
 		</li>
 		<li class="py-2 hover:bg-indigo-300 rounded">
@@ -51,4 +29,15 @@
 				</a>
 		</li>
 	</ul>
+</div>
 </template>
+<script setup>
+const config=useRuntimeConfig()
+const apiUrl=config.public.apiUrlBitu
+const params='/api/api.php/records/menuweb'
+const {data: list, pending}=await useLazyFetch(`${apiUrl}${params}`, {
+	headers: {
+		'x-api-key': config.public.apiKeyBitu
+	}
+})
+</script>

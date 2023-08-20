@@ -3,7 +3,7 @@
   <div v-if="pending">loading...</div>
   <div v-else class="flex flex-wrap">
     <div v-for="item in list.records" :key="item.id" class="max-w-sm rounded overflow-hidden shadow-lg">
-      <img class="w-full" src="/img/card-top.jpg" :alt="item.nama">
+      <img class="w-full" :src="`${apiUrl}/assets/uploads/images/services/${item.acak}-1.jpg`" :alt="item.nama">
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">{{item.nama}}</div>
         <p class="text-gray-700 text-base">
@@ -23,7 +23,8 @@
 <script setup>
   const config=useRuntimeConfig()
   const apiUrl=config.public.apiUrlBitu
-  const {data: list, error, pending, refresh}=await useLazyFetch(`${apiUrl}/api/api.php/records/services`, {
+  const params='/api/api.php/records/services?filter=pub,eq,1'
+  const {data: list, error, pending, refresh}=await useLazyFetch(`${apiUrl}${params}`, {
     headers: {
       'x-api-key': config.public.apiKeyBitu
     }
