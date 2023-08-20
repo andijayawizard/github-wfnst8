@@ -4,7 +4,7 @@
   <div v-if="pending">loading...</div>
   <div v-else>
     <div class="flex flex-wrap">
-      <div v-for="item in list.records" :key="item.id" class="max-w-sm rounded overflow-hidden shadow-lg">
+      <div v-for="item in list.records" :key="item.id" class="max-w-sm w-1/2 rounded overflow-hidden shadow-lg m-2">
         <img class="w-full" :src="`${apiUrl}/assets/uploads/images/blog/${item.acak}-1.jpg`" :alt="item.nama">
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2">{{item.nama}}</div>
@@ -25,16 +25,18 @@
   const config=useRuntimeConfig()
   const apiUrl=config.public.apiUrlBitu
   const params='/api/api.php/records/blog?filter=pub,eq,1&page=1,10'
-  // const {data: list, error, pending, refresh}=await useFetch(`${apiUrl}/api/blogs`, {
-  //   lazy: true,
-  //   headers: {
-  //     'x-api-key': config.public.API_KEY
-  //   }
-  // })
-  const {data: list, pending}=await useLazyFetch(`${apiUrl}${params}`, {
+  const {data: list, error, pending, refresh}=await useLazyAsyncData('blog', ()=>$fetch(`${params}`, {
+    method: 'GET',
+    baseURL: `${apiUrl}`,
     headers: {
       'x-api-key': config.public.apiKeyBitu
     },
-  })
+    pick: ['id']
+  }))
+  // const {data: list, pending}=await useLazyFetch(`${apiUrl}${params}`, {
+  //   headers: {
+  //     'x-api-key': config.public.apiKeyBitu
+  //   },
+  // })
   // console.log(data)
 </script>

@@ -34,7 +34,7 @@
 <script setup>
 const config=useRuntimeConfig()
 const apiUrl=config.public.apiUrlBitu
-const params='/api/api.php/records/menuweb'
+const params='/api/api.php/records/menuweb?filter=pub,eq,1'
 const {data: list, pending}=await useLazyFetch(`${apiUrl}${params}`, {
 	headers: {
 		'x-api-key': config.public.apiKeyBitu

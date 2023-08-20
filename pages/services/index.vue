@@ -2,7 +2,7 @@
   <h1 class="text-3xl">Our Services</h1>
   <div v-if="pending">loading...</div>
   <div v-else class="flex flex-wrap">
-    <div v-for="item in list.records" :key="item.id" class="max-w-sm rounded overflow-hidden shadow-lg">
+    <div v-for="item in list.records" :key="item.id" class="max-w-sm rounded overflow-hidden shadow-lg m-2">
       <img class="w-full" :src="`${apiUrl}/assets/uploads/images/services/${item.acak}-1.jpg`" :alt="item.nama">
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">{{item.nama}}</div>
