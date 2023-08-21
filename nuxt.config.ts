@@ -7,6 +7,7 @@ export default defineNuxtConfig({
       tailwindcss: {},
     },
   },
+  modules: ['@nuxt/content'],
   // publicRuntimeConfig: {
   //   API_BASE_URL: process.env.API_BASE_URL || "https://fakestoreapi.com"
   // },

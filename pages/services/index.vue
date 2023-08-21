@@ -14,7 +14,7 @@
       />
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">
-          <NuxtLink :to="`services/${item.seo}`">{{ item.nama }}</NuxtLink>
+          <NuxtLink :to="`/services/${item.id}`">{{ item.nama }}</NuxtLink>
         </div>
         <p class="text-gray-700 text-base">
           {{ item.rgks }}
