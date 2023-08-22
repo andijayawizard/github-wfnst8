@@ -5,7 +5,7 @@
       :src="`${config.public.apiUrlBitu}/assets/uploads/images/services/${item.acak}-1.jpg`"
     />
     <h1 class="text-3xl">{{ item.nama }}</h1>
-    <p>{{ item.ktrg }}</p>
+    <p v-html="item.ktrg"></p>
   </div>
 </template>
 <script setup>
