@@ -1,6 +1,11 @@
+<script lang="ts" setup>
+useHead({ title: "Contact Us" });
+</script>
+
 <template>
-    <div>
-        <h1 class="text-3xl">contact us</h1>
-				<p>punya pertanyaan? jangan ragu untuk hubungi kami</p>
-    </div>
+  <NuxtLayout>
+    <Contact />
+  </NuxtLayout>
 </template>
+
+<style scoped></style>
