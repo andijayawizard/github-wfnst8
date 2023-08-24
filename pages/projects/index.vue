@@ -1,6 +1,14 @@
+<script lang="ts" setup>
+definePageMeta({
+  layout: "default",
+});
+</script>
+
 <template>
-    <div>
-        <h1 class="text-3xl">projects</h1>
-        <p>our all of time projects</p>
-    </div>
+  <NuxtLayout>
+    My Exist Projects
+    <p>our new projects</p>
+  </NuxtLayout>
 </template>
+
+<style scoped></style>
