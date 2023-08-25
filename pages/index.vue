@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 definePageMeta({
-  layout: "default",
+  layout: "hero",
 });
 useHead({
   title: "Selamat datang di BituNuxt",

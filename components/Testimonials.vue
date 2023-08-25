@@ -1,4 +1,14 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const config = useRuntimeConfig();
+const { data: list, pending } = await useFetch(
+  `${config.public.apiUrlAfl}/api/api.php/records/testimonial`,
+  {
+    headers: {
+      "x-api-key": config.public.apiKeyBitu,
+    },
+  }
+);
+</script>
 
 <template>
   <div>
@@ -26,7 +36,11 @@
         </div>
 
         <div class="flex flex-wrap">
-          <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+          <div
+            v-for="(item, index) in list.records"
+            :key="index"
+            class="w-full md:w-1/2 lg:w-1/3 px-4"
+          >
             <div
               class="ud-single-testimonial p-8 bg-white mb-12 shadow-testimonial wow fadeInUp"
               data-wow-delay=".1s
@@ -95,23 +109,23 @@
                 </span>
               </div>
               <div class="ud-testimonial-content mb-6">
-                <p class="text-base tracking-wide text-body-color">
-                  “Our members are so impressed. It's intuitive. It's clean.
-                  It's distraction free. If you're building a community.
-                </p>
+                <p
+                  class="text-base tracking-wide text-body-color"
+                  v-html="item.ktrg"
+                ></p>
               </div>
               <div class="ud-testimonial-info flex items-center">
                 <div
                   class="ud-testimonial-image w-[50px] h-[50px] rounded-full overflow-hidden mr-5"
                 >
                   <img
-                    src="../assets/images/testimonials/author-01.png"
-                    alt="author"
+                    :src="`${config.public.apiUrlAfl}/frontend/img/testimonial-1.jpg`"
+                    :alt="`${item.nama}`"
                   />
                 </div>
                 <div class="ud-testimonial-meta">
-                  <h4 class="text-sm font-semibold">Sabo Masties</h4>
-                  <p class="text-[#969696] text-xs">Founder @ Rolex</p>
+                  <h4 class="text-sm font-semibold">{{ item.nama }}</h4>
+                  <p class="text-[#969696] text-xs">{{ item.rgks }}</p>
                 </div>
               </div>
             </div>

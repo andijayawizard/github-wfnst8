@@ -19,7 +19,7 @@ const { data: list, pending } = await useFetch(
   <div>
     <section class="pt-20 lg:pt-[120px] pb-8 lg:pb-[70px]">
       <div class="container">
-        <div class="flex flex-wrap -mx-4">
+        <div v-show="route.path == '/'" class="flex flex-wrap -mx-4">
           <div class="w-full px-4">
             <div class="mb-12 lg:mb-20 max-w-[620px]">
               <span class="font-semibold text-lg text-primary mb-2 block">
@@ -78,7 +78,7 @@ const { data: list, pending } = await useFetch(
               >
             </div>
           </div>
-          <div class="w-full md:w-1/2 lg:w-1/4 px-4">
+          <div v-show="route.path != '/'" class="w-full md:w-1/2 lg:w-1/4 px-4">
             <div
               class="bg-white mb-12 group wow fadeInUp"
               data-wow-delay=".15s"
@@ -116,7 +116,7 @@ const { data: list, pending } = await useFetch(
               </a>
             </div>
           </div>
-          <div class="w-full md:w-1/2 lg:w-1/4 px-4">
+          <div v-show="route.path != '/'" class="w-full md:w-1/2 lg:w-1/4 px-4">
             <div class="bg-white mb-12 group wow fadeInUp" data-wow-delay=".2s">
               <div
                 class="w-[70px] h-[70px] flex items-center justify-center bg-primary rounded-2xl mb-8 relative z-10"
@@ -163,7 +163,7 @@ const { data: list, pending } = await useFetch(
               </a>
             </div>
           </div>
-          <div class="w-full md:w-1/2 lg:w-1/4 px-4">
+          <div v-show="route.path != '/'" class="w-full md:w-1/2 lg:w-1/4 px-4">
             <div
               class="bg-white mb-12 group wow fadeInUp"
               data-wow-delay=".25s"

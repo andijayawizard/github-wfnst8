@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+const route = useRoute();
 const config = useRuntimeConfig();
 const apiUrl = config.public.apiUrlBitu;
 const { data: item, pending } = await useLazyAsyncData("about", () =>
@@ -40,17 +41,12 @@ const { data: item, pending } = await useLazyAsyncData("about", () =>
                     class="text-base text-body-color mb-9 leading-relaxed"
                     v-html="item.ktrg"
                   ></p>
-                  <p class="text-base text-body-color mb-9 leading-relaxed">
-                    The main ‘thrust' is to focus on educating attendees on how
-                    to best protect highly vulnerable business applications with
-                    interactive panel.
-                  </p>
-                  <a
-                    href="javascript:void(0)"
+                  <NuxtLink
+                    v-show="route.path == '/'"
                     class="inline-flex items-center justify-center py-4 px-6 rounded text-white bg-primary text-base font-medium hover:bg-opacity-90 hover:shadow-lg transition duration-300 ease-in-out"
+                    to="/about-us"
+                    >Learn More</NuxtLink
                   >
-                    Learn More
-                  </a>
                 </div>
                 <div class="text-center">
                   <div class="relative inline-block z-10">

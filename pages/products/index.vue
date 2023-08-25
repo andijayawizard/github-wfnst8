@@ -48,7 +48,9 @@ const {
             :alt="item.nama"
           />
           <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">{{ item.nama }}</div>
+            <div class="font-bold text-xl mb-2">
+              <NuxtLink :to="`/products/${item.id}`">{{ item.nama }}</NuxtLink>
+            </div>
             <p class="text-gray-700 text-base">
               {{ item.rgks }}
             </p>
