@@ -4,7 +4,12 @@ export default defineNuxtConfig({
   // server: {
   //   port: 3100,
   // },
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', 'assets/css/animate.css', 'assets/css/tailwind.css'],
+  app: {
+    head: {
+      script: ['assets/js/wow.min.js'],
+    }
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -26,5 +31,26 @@ export default defineNuxtConfig({
     // private: {
     //   API_KEY: process.env.API_KEY,
     // },
-  }
+  },
+  // head: {
+  //   title: 'BituNuxt',
+  //   meta: [{
+  //     charset: 'utf-8'
+  //   },
+  //   {
+  //     name: 'viewport',
+  //     content: 'width=device-width, initial-scale=1.0'
+  //   }],
+  //   link: [{
+  //     rel: 'stylesheet',
+  //     href: 'assets/css/animate.css'
+  //   }, {
+  //     rel: 'stylesheet',
+  //     href: 'assets/css/tailwind.css'
+  //   }],
+  //   script: [{
+  //     type: 'module',
+  //     src: 'assets/js/wow.min.js'
+  //   }]
+  // }
 });
