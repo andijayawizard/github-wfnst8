@@ -40,7 +40,7 @@ const {
         <div
           v-for="(item, index) in list.records"
           :key="index"
-          class="max-w-sm rounded overflow-hidden shadow-lg"
+          class="max-w-sm rounded overflow-hidden shadow-lg m-2"
         >
           <img
             class="w-full"

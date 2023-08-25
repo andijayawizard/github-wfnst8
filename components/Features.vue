@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 const config = useRuntimeConfig();
 const route = useRoute();
-const params = "/api/api.php/records/services?filter=pub,eq,1&size=4";
-// if (route.path == "/") {
-//   params = "/api/api.php/records/services?filter=pub,eq,1&size=4";
-// } else {
-//   params = "/api/api.php/records/services?filter=pub,eq,1";
-// }
+let params;
+if (route.path == "/") {
+  params = "/api/api.php/records/services?filter=pub,eq,1&size=4";
+} else {
+  params = "/api/api.php/records/services?filter=pub,eq,1";
+}
 const { data: list, pending } = await useFetch(
   `${config.public.apiUrlBitu}${params}`,
   {
@@ -16,7 +16,6 @@ const { data: list, pending } = await useFetch(
 </script>
 
 <template>
-  {{ $route.name }}
   <div>
     <section class="pt-20 lg:pt-[120px] pb-8 lg:pb-[70px]">
       <div class="container">
