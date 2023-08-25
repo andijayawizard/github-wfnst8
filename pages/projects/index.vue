@@ -2,6 +2,7 @@
 definePageMeta({
   layout: "default",
 });
+useHead({ title: "Our Projects" });
 </script>
 
 <template>

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+useHead({ title: "Products" });
 const config = useRuntimeConfig();
 const apiUrl = config.public.apiUrlBitu;
 // const apiUrl='https://api.roastandbrew.coffee'

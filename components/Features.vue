@@ -1,6 +1,22 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const config = useRuntimeConfig();
+const route = useRoute();
+const params = "/api/api.php/records/services?filter=pub,eq,1&size=4";
+// if (route.path == "/") {
+//   params = "/api/api.php/records/services?filter=pub,eq,1&size=4";
+// } else {
+//   params = "/api/api.php/records/services?filter=pub,eq,1";
+// }
+const { data: list, pending } = await useFetch(
+  `${config.public.apiUrlBitu}${params}`,
+  {
+    headers: { "x-api-key": config.public.apiKeyBitu },
+  }
+);
+</script>
 
 <template>
+  {{ $route.name }}
   <div>
     <section class="pt-20 lg:pt-[120px] pb-8 lg:pb-[70px]">
       <div class="container">
@@ -25,7 +41,11 @@
           </div>
         </div>
         <div class="flex flex-wrap -mx-4">
-          <div class="w-full md:w-1/2 lg:w-1/4 px-4">
+          <div
+            class="w-full md:w-1/2 lg:w-1/4 px-4"
+            v-for="(item, index) in list.records"
+            :key="index"
+          >
             <div class="bg-white mb-12 group wow fadeInUp" data-wow-delay=".1s">
               <div
                 class="w-[70px] h-[70px] flex items-center justify-center bg-primary rounded-2xl mb-8 relative z-10"
@@ -47,17 +67,16 @@
                 </svg>
               </div>
               <h4 class="font-bold text-xl text-dark mb-3">
-                Free and Open-Source
+                {{ item.nama }}
               </h4>
               <p class="text-body-color mb-8 lg:mb-11">
-                Lorem Ipsum is simply dummy text of the printing and industry.
+                {{ item.rgks }}
               </p>
-              <a
-                href="javascript:void(0)"
+              <NuxtLink
                 class="font-medium text-base text-body-color hover:text-primary"
+                :to="`/services/${item.id}`"
+                >Learn More</NuxtLink
               >
-                Learn More
-              </a>
             </div>
           </div>
           <div class="w-full md:w-1/2 lg:w-1/4 px-4">

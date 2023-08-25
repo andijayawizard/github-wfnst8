@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+useHead({ title: "Read Our Blog" });
 const config = useRuntimeConfig();
 const apiUrl = config.public.apiUrlBitu;
 const params = "/api/api.php/records/blog?filter=pub,eq,1&page=1,10";
