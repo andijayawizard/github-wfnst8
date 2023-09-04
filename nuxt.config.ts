@@ -27,6 +27,8 @@ export default defineNuxtConfig({
       apiKeyBitu: process.env.apiKeyBitu,
       apiStrapi: process.env.apiStrapi,
       apiUrlAfl: process.env.apiUrlAfl,
+      apiUrlLocal: process.env.apiUrlLocal,
+      apiKeyLocal: process.env.apiKeyLocal,
     },
     // private: {
     //   API_KEY: process.env.API_KEY,

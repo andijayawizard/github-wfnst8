@@ -1,12 +1,15 @@
 <script lang="ts" setup>
 const config = useRuntimeConfig();
-const { data: list } = await useFetch(
-  `${config.public.apiUrlBitu}/api/api.php/records/menuweb?filter=pub,eq,1`,
-  {
-    headers: {
-      "x-api-key": config.public.apiKeyBitu,
-    },
-  }
+const { data: list } = await useLazyAsyncData("menuweb", () =>
+  $fetch(
+    `${config.public.apiUrlBitu}/api/api.php/records/menuweb?filter=pub,eq,1`,
+    // `${config.public.apiUrlLocal}/api/menuweb`,
+    {
+      headers: {
+        "x-api-key": config.public.apiKeyBitu,
+      },
+    }
+  )
 );
 </script>
 

@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 useHead({ title: "Read Our Blog" });
 const config = useRuntimeConfig();
-const apiUrl = config.public.apiUrlBitu;
-const params = "/api/api.php/records/blog?filter=pub,eq,1&page=1,10";
+const apiUrlBitu = config.public.apiUrlBitu;
+const apiUrlLocal = config.public.apiUrlLocal;
+const params = "/api/blogs";
+// const params = "/api/api.php/records/blog?filter=pub,eq,1&page=1,10";
 const {
   data: list,
   error,
@@ -11,9 +13,9 @@ const {
 } = await useLazyAsyncData("blog", () =>
   $fetch(`${params}`, {
     method: "GET",
-    baseURL: `${apiUrl}`,
+    baseURL: `${apiUrlLocal}`,
     headers: {
-      "x-api-key": config.public.apiKeyBitu,
+      "x-api-key": config.public.apiKeyLocal,
     },
     pick: ["id"],
   })
@@ -26,13 +28,18 @@ const {
     <div v-else>
       <div class="flex flex-wrap">
         <div
-          v-for="(item, index) in list.records"
+          v-for="(item, index) in list.data"
           :key="index"
           class="max-w-sm w-1/2 rounded overflow-hidden shadow-lg m-2"
         >
-          <img
+          <!-- <img
             class="w-full"
             :src="`${apiUrl}/assets/uploads/images/blog/${item.acak}-1.jpg`"
+            :alt="item.nama"
+          /> -->
+          <img
+            class="w-full"
+            :src="`${apiUrlLocal}/storage/${item.acak}`"
             :alt="item.nama"
           />
           <div class="px-6 py-4">
