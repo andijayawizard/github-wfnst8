@@ -37,11 +37,13 @@ const {
             :src="`${apiUrl}/assets/uploads/images/blog/${item.acak}-1.jpg`"
             :alt="item.nama"
           /> -->
-          <img
-            class="w-full"
-            :src="`${apiUrlLocal}/storage/${item.acak}`"
-            :alt="item.nama"
-          />
+          <NuxtLink :to="`/blog/${item.slug}`">
+            <img
+              class="w-full"
+              :src="`${apiUrlLocal}/storage/${item.acak}`"
+              :alt="item.nama"
+            />
+          </NuxtLink>
           <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">{{ item.nama }}</div>
             <p class="text-gray-700 text-base">
