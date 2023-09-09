@@ -1,0 +1,10 @@
+type Blog @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  nama: String!
+  slug: String!
+  rgks: String
+  ktrg: String
+  acak: String
+  pub: Boolean
+  tags: [String]
+} 
