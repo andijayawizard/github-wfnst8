@@ -1,21 +1,15 @@
 <script lang="ts" setup>
 useHead({ title: "Read Our Blog" });
 const config = useRuntimeConfig();
-const apiUrlBitu = config.public.apiUrlBitu;
 const apiUrlLocal = config.public.apiUrlLocal;
-const params = "/api/blogs";
-// const params = "/api/api.php/records/blog?filter=pub,eq,1&page=1,10";
-const {
-  data: list,
-  error,
-  pending,
-  refresh,
-} = await useLazyAsyncData("blog", () =>
+// const params = "/api/blogs";
+const params = "/api/api.php/records/blog?filter=pub,eq,1&page=1,10";
+const { data: list, error, pending, refresh } = await useLazyAsyncData("blog", () =>
   $fetch(`${params}`, {
     method: "GET",
-    baseURL: `${apiUrlLocal}`,
+    baseURL: config.public.apiUrlBitu,
     headers: {
-      "x-api-key": config.public.apiKeyLocal,
+      "x-api-key": config.public.apiKeyBitu,
     },
     pick: ["id"],
   })
@@ -28,7 +22,7 @@ const {
     <div v-else>
       <div class="flex flex-wrap">
         <div
-          v-for="(item, index) in list.data"
+          v-for="(item, index) in list.records"
           :key="index"
           class="max-w-sm w-1/2 rounded overflow-hidden shadow-lg m-2"
         >
@@ -37,18 +31,16 @@ const {
             :src="`${apiUrl}/assets/uploads/images/blog/${item.acak}-1.jpg`"
             :alt="item.nama"
           /> -->
-          <NuxtLink :to="`/blog/${item.slug}`">
+          <NuxtLink :to="`/blog/${item.id}`">
             <img
               class="w-full"
-              :src="`${apiUrlLocal}/storage/${item.acak}`"
+              :src="`${config.public.apiUrlBitu}/assets/uploads/images/blog/${item.acak}-1.jpg`"
               :alt="item.nama"
             />
           </NuxtLink>
           <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">{{ item.nama }}</div>
-            <p class="text-gray-700 text-base">
-              {{ item.rgks }}
-            </p>
+            <div class="font-bold text-xl mb-2" v-text="item.nama"></div>
+            <p class="text-gray-700 text-base" v-text="item.rgks"></p>
           </div>
           <div class="px-6 pt-4 pb-2">
             <span
